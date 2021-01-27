@@ -1,0 +1,39 @@
+---
+title: "Dplyr Tutorial"
+author: "Rick"
+date: "27/01/2021"
+output: 
+  html_document:
+  code_folding: "show"
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+```{r load, Libraries}
+library(tidyverse)
+library(knitr)
+library(nycflights13)
+
+```
+
+In this tutorial we will explore the Dplyr package of the Tidyverse. In this tutorial we will examine the following functions, along with the associated cheat sheet.
+
+1) filter()
+2) arrange()
+3) select()
+4) rename()
+5) mutate() and extensions
+6) group_by
+7) summarise()
+8) left_join()
+
+Please niote that this tutorial was adapted from chapters 5 and 13 of the book 'R for Data Science' by Hadley Wickham and Garrett Grolemund. This book can be found at https://r4ds.had.co.nz/ The tutorial was originally delivered by RichardonData and the tuorial can be found at https://www.youtube.com/watch?v=6Z48qcrTfYU
+
+A good cheat sheet for dplyr functions canbe found at https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+The 
+
+
