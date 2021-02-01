@@ -78,5 +78,37 @@ flightsArranged
 
 ###Select and Rename###
 
-The 'select()' function can be used to select variables
+The 'select()' function can be used to select variables (i.e. columns) of the dataset. A '-' sign can be used to remove columns. 
+The 'rename()' function can be used to change the name of variables in a daatset. 
+
+```{r examples of "select" and "rename"}
+flightsSelected <- flightsArranged %>%
+  dplyr::select(-(hour:time_hour)) %>%
+  dplyr::select(flight, year, month, day, dep_time, dep_delay, arr_time, arr_delay, carrier, origin, dest, air_time, distance) %>%
+  dplyr::rename("airtime" = "air_time", "destination" = "dest")
+flightsSelected
+```
+
+<br>
+
+###Mutate###
+
+The "mutate()" function can be used to create new variables.
+
+```{r example of "mutate"}
+flightsMutated <- flightsSelected %>%
+  mutate(gain = dep_delay - arr_delay,
+         hours = airtime / 60,
+         gain_per_hour = gain/hours)
+flightsMutated
+```
+
+There are various extensions of the mutate function. The old helper functions 'mutate_at()' and 'mutate_all()', which can be used to modify multiple variables at a time. The arguements for these functions were '.vars' and '.funs'. Recently is the '.across()' function which will take in arguements .cols and .fns. This is the recommended way of extending the 'mutate()' function. 
+
+```{r extensions of "mutate"}
+flight2A <- flightsMutated %>%
+  mutate_at(.vars = c("year", "month", "day"), .funs = as.character)
+flights2B <- flightsMutated %>%
+  mutate(across(.cols = c("year", "month", "day"), .fns = as.character))
+
 
